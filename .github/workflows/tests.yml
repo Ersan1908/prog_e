@@ -12,3 +12,19 @@ jobs:
       - run: ruff check .
       - run: ruff format --check .
       - run: pytest --cov=app --cov-report=term-missing
+  frontend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: pnpm/action-setup@v4
+        with:
+          package_json_file: frontend/package.json
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm test
+      - run: pnpm build

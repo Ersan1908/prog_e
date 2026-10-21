@@ -13,6 +13,7 @@ select = ["E", "F", "I", "B", "UP"]
 [tool.ruff.lint.per-file-ignores]
 # Текст отчёта и таблицы хранятся как длинные строковые литералы.
 "scripts/build_report.py" = ["E501"]
+"scripts/build_report2.py" = ["E501"]
 
 [tool.coverage.run]
 source = ["app"]
