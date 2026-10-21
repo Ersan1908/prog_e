@@ -1,6 +1,7 @@
 """PDF-отчёт по лабораторной №2: React, REST API и CORS."""
 
 import json
+import os
 from pathlib import Path
 from xml.etree import ElementTree
 
@@ -9,6 +10,8 @@ from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY, TA_RIGHT
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.units import cm
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import (
     Image,
     PageBreak,
@@ -20,12 +23,40 @@ from reportlab.platypus import (
     TableStyle,
 )
 
-from scripts.build_report import register_fonts
-
 ROOT = Path(__file__).resolve().parent.parent
 DOCS = ROOT / "docs" / "lab2"
 OUTPUT = ROOT / "output" / "pdf" / "lab2-report.pdf"
 WIDTH = A4[0] - 4.5 * cm
+
+
+def register_fonts():
+    candidates = [
+        (
+            Path("/System/Library/Fonts/Supplemental"),
+            "Times New Roman.ttf",
+            "Times New Roman Bold.ttf",
+            "Courier New.ttf",
+        ),
+        (
+            Path(os.environ.get("WINDIR", "C:/Windows")) / "Fonts",
+            "times.ttf",
+            "timesbd.ttf",
+            "cour.ttf",
+        ),
+        (
+            Path("/usr/share/fonts/truetype/dejavu"),
+            "DejaVuSerif.ttf",
+            "DejaVuSerif-Bold.ttf",
+            "DejaVuSansMono.ttf",
+        ),
+    ]
+    for directory, regular, bold, mono in candidates:
+        if all((directory / name).exists() for name in (regular, bold, mono)):
+            for label, name in [("Report", regular), ("ReportBold", bold), ("ReportMono", mono)]:
+                pdfmetrics.registerFont(TTFont(label, str(directory / name)))
+            pdfmetrics.registerFontFamily("Report", normal="Report", bold="ReportBold")
+            return
+    raise RuntimeError("Установите Times New Roman и Courier New либо DejaVu Serif / Sans Mono")
 
 
 def main():

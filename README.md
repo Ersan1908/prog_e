@@ -147,30 +147,3 @@ Python 3.12.14 все 66 тестов прошли; покрытие кода п
 Во второй работе добавлены ещё 7 проверок CORS, всего теперь 73 backend-теста.
 
 GitHub Actions запускает те же проверки на Python 3.12 при push и pull request.
-
-## Структура и материалы сдачи
-
-```text
-app/                   модели, схемы, подключение БД и маршруты
-tests/test_api.py      автоматические проверки
-examples/             исходные учебные данные и HTTP-запросы
-docs/openapi.json     сохранённая спецификация
-docs/demo-results.json фактические примеры запросов и ответов
-docs/test-results.xml результат pytest (JUnit)
-output/pdf/           PDF-отчёт
-scripts/              воспроизведение примеров и сборка отчёта
-```
-
-Отчёт: [output/pdf/report.pdf](output/pdf/report.pdf).
-Для обновления примеров: `python -m scripts.capture_demo`.
-Для сборки PDF: установите `requirements-report.txt` и выполните
-`python -m scripts.build_report`. Нужны шрифты Times New Roman и Courier New
-(macOS/Windows) либо DejaVu Serif и DejaVu Sans Mono (Linux).
-ФИО преподавателя оставлено на титульном листе для заполнения.
-
-## Источники
-
-- [FastAPI: работа с SQL-БД](https://fastapi.tiangolo.com/tutorial/sql-databases/).
-- [FastAPI: тестирование](https://fastapi.tiangolo.com/tutorial/testing/).
-- [SQLAlchemy 2.0: диалект SQLite](https://docs.sqlalchemy.org/en/20/dialects/sqlite.html).
-- [Pydantic: поля и ограничения](https://docs.pydantic.dev/latest/concepts/fields/).

@@ -182,7 +182,8 @@ GitHub Actions запускает тесты Python, тесты JavaScript и с
 [output/pdf/lab2-report.pdf](../output/pdf/lab2-report.pdf).
 Для повторной сборки PDF из корня проекта: установите `requirements-report.txt`
 и выполните `python -m scripts.build_report2`. Скрипт использует сохранённые
-результаты тестов и скриншоты; требования к шрифтам описаны в корневом README.
+результаты тестов и скриншоты. Нужны Times New Roman и Courier New
+(macOS/Windows) либо DejaVu Serif и DejaVu Sans Mono (Linux).
 
 ## Справочные материалы
 
