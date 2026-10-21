@@ -1,0 +1,10 @@
+[
+  {"title":"Орбита надежды","director":"Иван Петров","year":2024,"genre":"Фантастика","rating":8.4,"duration_minutes":125,"description":"Учебный пример: экспедиция к далёкой планете."},
+  {"title":"Тихий город","director":"Анна Соколова","year":2023,"genre":"Драма","rating":7.6,"duration_minutes":104,"description":"Учебный пример: история возвращения домой."},
+  {"title":"Последний маршрут","director":"Олег Смирнов","year":2024,"genre":"Триллер","rating":8.1,"duration_minutes":118,"description":null},
+  {"title":"Лето на двоих","director":"Анна Соколова","year":2022,"genre":"Комедия","rating":6.9,"duration_minutes":96,"description":null},
+  {"title":"За горизонтом","director":"Мария Волкова","year":2021,"genre":"Приключения","rating":7.8,"duration_minutes":112,"description":null},
+  {"title":"Орбита памяти","director":"Иван Петров","year":2024,"genre":"Фантастика","rating":8.8,"duration_minutes":132,"description":null},
+  {"title":"Ночной архив","director":"Олег Смирнов","year":2023,"genre":"Триллер","rating":7.3,"duration_minutes":107,"description":null},
+  {"title":"Мелодия дождя","director":"Мария Волкова","year":2020,"genre":"Драма","rating":8.0,"duration_minutes":109,"description":null}
+]

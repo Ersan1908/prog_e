@@ -1,0 +1,218 @@
+{
+  "python": "3.12.14",
+  "versions": {
+    "fastapi": "0.156.8",
+    "pydantic": "2.14.1",
+    "SQLAlchemy": "2.0.55",
+    "uvicorn": "0.54.0",
+    "pytest": "9.1.1"
+  },
+  "requests": [
+    {
+      "method": "GET",
+      "path": "/health",
+      "request": null,
+      "status": 200,
+      "response": {
+        "status": "ok",
+        "database": "sqlite"
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/movies?q=ОРБИТА&year=2024&rating_min=8&sort_by=rating&order=desc&page_size=2",
+      "request": null,
+      "status": 200,
+      "response": {
+        "items": [
+          {
+            "title": "Орбита памяти",
+            "director": "Иван Петров",
+            "year": 2024,
+            "genre": "Фантастика",
+            "rating": 8.8,
+            "duration_minutes": 132,
+            "description": null,
+            "id": 6
+          },
+          {
+            "title": "Орбита надежды",
+            "director": "Иван Петров",
+            "year": 2024,
+            "genre": "Фантастика",
+            "rating": 8.4,
+            "duration_minutes": 125,
+            "description": "Учебный пример: экспедиция к далёкой планете.",
+            "id": 1
+          }
+        ],
+        "total": 2,
+        "page": 1,
+        "page_size": 2,
+        "total_pages": 1
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/movies/stats",
+      "request": null,
+      "status": 200,
+      "response": {
+        "total_movies": 8,
+        "average_rating": 7.86,
+        "earliest_year": 2020,
+        "latest_year": 2024,
+        "genres": [
+          {
+            "genre": "Драма",
+            "count": 2,
+            "average_rating": 7.8
+          },
+          {
+            "genre": "Комедия",
+            "count": 1,
+            "average_rating": 6.9
+          },
+          {
+            "genre": "Приключения",
+            "count": 1,
+            "average_rating": 7.8
+          },
+          {
+            "genre": "Триллер",
+            "count": 2,
+            "average_rating": 7.7
+          },
+          {
+            "genre": "Фантастика",
+            "count": 2,
+            "average_rating": 8.6
+          }
+        ]
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/genres",
+      "request": null,
+      "status": 200,
+      "response": [
+        "Драма",
+        "Комедия",
+        "Приключения",
+        "Триллер",
+        "Фантастика"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/movies",
+      "request": {
+        "title": "Контрольный фильм",
+        "director": "Иван Петров",
+        "year": 2024,
+        "genre": "Фантастика",
+        "rating": 8.4,
+        "duration_minutes": 125,
+        "description": "Учебный пример: экспедиция к далёкой планете."
+      },
+      "status": 201,
+      "response": {
+        "title": "Контрольный фильм",
+        "director": "Иван Петров",
+        "year": 2024,
+        "genre": "Фантастика",
+        "rating": 8.4,
+        "duration_minutes": 125,
+        "description": "Учебный пример: экспедиция к далёкой планете.",
+        "id": 9
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/movies/9",
+      "request": null,
+      "status": 200,
+      "response": {
+        "title": "Контрольный фильм",
+        "director": "Иван Петров",
+        "year": 2024,
+        "genre": "Фантастика",
+        "rating": 8.4,
+        "duration_minutes": 125,
+        "description": "Учебный пример: экспедиция к далёкой планете.",
+        "id": 9
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/movies/9",
+      "request": {
+        "title": "Контрольный фильм",
+        "director": "Иван Петров",
+        "year": 2024,
+        "genre": "Фантастика",
+        "rating": 9.0,
+        "duration_minutes": 125,
+        "description": "Учебный пример: экспедиция к далёкой планете."
+      },
+      "status": 200,
+      "response": {
+        "title": "Контрольный фильм",
+        "director": "Иван Петров",
+        "year": 2024,
+        "genre": "Фантастика",
+        "rating": 9.0,
+        "duration_minutes": 125,
+        "description": "Учебный пример: экспедиция к далёкой планете.",
+        "id": 9
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/movies/9",
+      "request": null,
+      "status": 204,
+      "response": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/movies/9",
+      "request": null,
+      "status": 404,
+      "response": {
+        "detail": "Фильм не найден"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/movies",
+      "request": {
+        "title": "Контрольный фильм",
+        "director": "Иван Петров",
+        "year": 2024,
+        "genre": "Фантастика",
+        "rating": 11,
+        "duration_minutes": 125,
+        "description": "Учебный пример: экспедиция к далёкой планете."
+      },
+      "status": 422,
+      "response": {
+        "detail": [
+          {
+            "type": "less_than_equal",
+            "loc": [
+              "body",
+              "rating"
+            ],
+            "msg": "Input should be less than or equal to 10",
+            "input": 11,
+            "ctx": {
+              "le": 10.0
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

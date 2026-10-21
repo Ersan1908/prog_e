@@ -1,0 +1,35 @@
+### Проверка работоспособности
+GET http://127.0.0.1:8000/health
+
+### Поиск, фильтры, сортировка и пагинация
+GET http://127.0.0.1:8000/api/v1/movies?q=ОРБИТА&year=2024&rating_min=8&sort_by=rating&order=desc&page=1&page_size=2
+
+### Создание фильма: запомните id из ответа
+POST http://127.0.0.1:8000/api/v1/movies
+Content-Type: application/json
+
+{"title":"Контрольный фильм","director":"Иван Петров","year":2024,"genre":"Драма","rating":8.2,"duration_minutes":110,"description":"Учебный пример"}
+
+### Чтение (при необходимости замените id)
+GET http://127.0.0.1:8000/api/v1/movies/1
+
+### Полная замена фильма (при необходимости замените id)
+PUT http://127.0.0.1:8000/api/v1/movies/1
+Content-Type: application/json
+
+{"title":"Обновлённый фильм","director":"Иван Петров","year":2024,"genre":"Драма","rating":9.0,"duration_minutes":110,"description":null}
+
+### Статистика по всей базе
+GET http://127.0.0.1:8000/api/v1/movies/stats
+
+### Список жанров
+GET http://127.0.0.1:8000/api/v1/genres
+
+### Неверный рейтинг: ожидается 422
+POST http://127.0.0.1:8000/api/v1/movies
+Content-Type: application/json
+
+{"title":"Ошибка","director":"Иван Петров","year":2024,"genre":"Драма","rating":11,"duration_minutes":110}
+
+### Удаление (при необходимости замените id)
+DELETE http://127.0.0.1:8000/api/v1/movies/1
